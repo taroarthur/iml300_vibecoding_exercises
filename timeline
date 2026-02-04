@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>TIMELINE — COMPUTER MUSIC</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000" link="#0000EE" vlink="#551A8B" alink="#FF0000"
+      style="font-family:'Times New Roman', Times, serif;">
+
+<table width="760" align="center" cellpadding="10" cellspacing="0" border="1">
+  <tr>
+    <td>
+      <p>
+        <a href="index.html">HOME</a> |
+        <a href="philosophies.html">PHILOSOPHIES</a> |
+        <a href="tech.html">TECH</a> |
+        <a href="midi-max.html">MIDI &amp; MAX/MSP</a> |
+        <a href="now.html">NOW</a>
+      </p>
+      <hr>
+
+      <h1>TIMELINE (VERY COMPRESSED)</h1>
+
+      <h2>1920s → ELECTRONIC INSTRUMENTS</h2>
+      <ul>
+        <li><b>1928:</b> [Ondes Martenot](chatgpt://generic-entity?number=1) created sound from vacuum tubes.  [oai_citation:7‡d'Aronville_IML288_ArtistPresentation_W4.pdf](sediment://file_00000000018471f5a21ca33fb9ae97ae)</li>
+      </ul>
+
+      <h2>1950s → PROGRAMMABLE SYNTH + SOFTWARE SOUND</h2>
+      <ul>
+        <li><b>1957:</b> RCA Mark II synthesiser: programmable via paper tape; installed at [Columbia University](chatgpt://generic-entity?number=2).  [oai_citation:8‡d'Aronville_IML288_ArtistPresentation_W4.pdf](sediment://file_00000000018471f5a21ca33fb9ae97ae)</li>
+        <li><b>1957:</b> [Bell Labs](chatgpt://generic-entity?number=3): [Max Mathews](chatgpt://generic-entity?number=4) writes MUSIC I (sound generation language), later MUSIC II adds four-voice polyphony.  [oai_citation:9‡d'Aronville_IML288_ArtistPresentation_W4.pdf](sediment://file_00000000018471f5a21ca33fb9ae97ae)</li>
+      </ul>
+
+      <h2>1960s → RESEARCH CULTURE</h2>
+      <ul>
+        <li>Composers visit Bell Labs (e.g., Jean Claude Risset, Charles Dodge); university labs proliferate; workflows are heavy/tedious with big machinery and tape transfer.  [oai_citation:10‡d'Aronville_IML288_ArtistPresentation_W4.pdf](sediment://file_00000000018471f5a21ca33fb9ae97ae)</li>
+      </ul>
+
+      <h2>1970s → CENTRES FORM</h2>
+      <ul>
+        <li>Key centres listed: [MIT](chatgpt://generic-entity?number=5); [University of Illinois at Urbana-Champaign](chatgpt://generic-entity?number=6); [UC San Diego](chatgpt://generic-entity?number=7); [Stanford University CCRMA](chatgpt://generic-entity?number=8).  [oai_citation:11‡d'Aronville_IML288_ArtistPresentation_W4.pdf](sediment://file_00000000018471f5a21ca33fb9ae97ae)</li>
+      </ul>
+
+      <h2>1980s → FM SYNTH GOES MAINSTREAM</h2>
+      <ul>
+        <li><b>FM synthesis:</b> [John Chowning](chatgpt://generic-entity?number=9) develops FM synthesis; the [Yamaha DX7](chatgpt://generic-entity?number=10) becomes a prominent commercial FM synth; your deck claims a large share of 1986 #1 singles used it.  [oai_citation:12‡d'Aronville_IML288_ArtistPresentation_W4.pdf](sediment://file_00000000018471f5a21ca33fb9ae97ae)  [oai_citation:13‡d'Aronville_IML288_ArtistPresentation_W4.pdf](sediment://file_00000000018471f5a21ca33fb9ae97ae)</li>
+      </ul>
+
+      <h2>1990s → NOW → SOFTWARE ECOSYSTEMS</h2>
+      <ul>
+        <li>Visual programming and live performance tools become standard, especially Max/MSP.  [oai_citation:14‡d'Aronville_IML288_ArtistPresentation_W4.pdf](sediment://file_00000000018471f5a21ca33fb9ae97ae)</li>
+        <li>AI-era tools emerge (sample indexing, timbre transformation).  [oai_citation:15‡d'Aronville_IML288_ArtistPresentation_W4.pdf](sediment://file_00000000018471f5a21ca33fb9ae97ae)</li>
+      </ul>
+
+      <p><small><a href="index.html">← back</a></small></p>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
