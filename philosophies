@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>PHILOSOPHIES — COMPUTER MUSIC</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000" link="#0000EE" vlink="#551A8B" alink="#FF0000"
+      style="font-family:'Times New Roman', Times, serif;">
+
+<table width="760" align="center" cellpadding="10" cellspacing="0" border="1">
+  <tr>
+    <td>
+      <p>
+        <a href="index.html">HOME</a> |
+        <a href="timeline.html">TIMELINE</a> |
+        <a href="tech.html">TECH</a> |
+        <a href="midi-max.html">MIDI &amp; MAX/MSP</a> |
+        <a href="now.html">NOW</a>
+      </p>
+      <hr>
+
+      <h1>PHILOSOPHIES</h1>
+
+      <h2>MUSICA UNIVERSALIS</h2>
+      <p>
+        One origin story (or myth, depending on your mood): the idea that planetary motion is a kind of
+        “harmonic algorithm.”  [oai_citation:5‡d'Aronville_IML288_ArtistPresentation_W4.pdf](sediment://file_00000000018471f5a21ca33fb9ae97ae)
+      </p>
+
+      <h3>MATH ↔ MUSIC</h3>
+      <p>
+        <b>[Pythagoras](chatgpt://generic-entity?number=0)</b> is cited in the deck for the relationship
+        between frequency and string length, as part of the long-running claim that mathematics and music have
+        been linked since Ancient Greece.  [oai_citation:6‡d'Aronville_IML288_ArtistPresentation_W4.pdf](sediment://file_00000000018471f5a21ca33fb9ae97ae)
+      </p>
+
+      <hr>
+
+      <h2>SO WHAT?</h2>
+      <p>
+        Computer music doesn’t appear out of nowhere: it’s a continuation of treating sound as something you can
+        model, formalise, and manipulate—only now the “instrument” can be an entire system of rules.
+      </p>
+
+      <p><small><a href="index.html">← back</a></small></p>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
