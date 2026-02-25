@@ -1,5 +1,4 @@
-// Image Manipulation Web App
-class DigitalAlchemyStudio {
+class ImageEditor {
     constructor() {
         this.canvas = document.getElementById('canvas');
         this.ctx = this.canvas.getContext('2d');
@@ -8,7 +7,6 @@ class DigitalAlchemyStudio {
         this.imageInput = document.getElementById('imageInput');
         this.placeholder = document.getElementById('placeholder');
         
-        // Settings
         this.pixelSize = 8;
         this.thresholdLevel = 128;
         
@@ -30,25 +28,26 @@ class DigitalAlchemyStudio {
             }
         });
 
+        // Theme select
+        document.getElementById('themeSelect').addEventListener('change', (e) => {
+            document.body.className = 'theme-' + e.target.value;
+        });
+
         // Effect buttons
         document.querySelectorAll('.effect-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
+            btn.addEventListener('click', () => {
                 const filter = btn.dataset.filter;
                 this.applyEffect(filter);
-                btn.classList.add('active');
-                setTimeout(() => btn.classList.remove('active'), 300);
             });
         });
 
         // Sliders
         document.getElementById('pixelSize').addEventListener('input', (e) => {
             this.pixelSize = parseInt(e.target.value);
-            document.getElementById('pixelValue').textContent = this.pixelSize;
         });
 
         document.getElementById('threshold').addEventListener('input', (e) => {
             this.thresholdLevel = parseInt(e.target.value);
-            document.getElementById('thresholdValue').textContent = this.thresholdLevel;
         });
 
         // Action buttons
@@ -72,10 +71,7 @@ class DigitalAlchemyStudio {
                 this.currentImage = img;
                 this.displayImage(img);
                 this.placeholder.style.display = 'none';
-                document.getElementById('info').innerHTML = `
-                    <p>Image loaded: ${file.name}</p>
-                    <p>Size: ${img.width} × ${img.height} pixels</p>
-                `;
+                document.getElementById('imageInfo').textContent = `${file.name} • ${img.width}x${img.height}`;
             };
             img.crossOrigin = 'Anonymous';
             img.src = e.target.result;
@@ -195,7 +191,6 @@ class DigitalAlchemyStudio {
         const data = imageData.data;
         const chars = [];
 
-        // Convert to grayscale and sample
         const sampleRate = 6;
         const lines = [];
         for (let y = 0; y < imageData.height; y += sampleRate) {
@@ -209,11 +204,10 @@ class DigitalAlchemyStudio {
             lines.push(line);
         }
 
-        // Clear canvas and draw text
-        this.ctx.fillStyle = '#00ff00';
+        this.ctx.fillStyle = '#000000';
         this.ctx.font = 'bold 8px monospace';
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-        this.ctx.fillStyle = '#000000';
+        this.ctx.fillStyle = '#ffffff';
 
         lines.forEach((line, i) => {
             this.ctx.fillText(line, 2, (i + 1) * 10);
@@ -250,7 +244,6 @@ class DigitalAlchemyStudio {
             data[i + 1] = dithered;
             data[i + 2] = dithered;
 
-            // Error diffusion (simple dither)
             if (i + 7 < data.length) {
                 const nextIdx = i + 4;
                 data[nextIdx] = Math.max(0, Math.min(255, data[nextIdx] + error * 0.5));
@@ -312,7 +305,6 @@ class DigitalAlchemyStudio {
         const width = imageData.width;
         const height = imageData.height;
 
-        // Sobel operator for edge detection
         const edges = new Uint8ClampedArray(width * height);
 
         for (let y = 1; y < height - 1; y++) {
@@ -351,7 +343,6 @@ class DigitalAlchemyStudio {
         const data = imageData.data;
         const width = imageData.width;
 
-        // Create glitch effect by shifting color channels
         for (let y = 0; y < imageData.height; y++) {
             if (Math.random() > 0.7) {
                 const shift = Math.floor(Math.random() * 20) - 10;
@@ -380,108 +371,23 @@ class DigitalAlchemyStudio {
     export() {
         if (!this.canvas) return;
 
-        const newWindow = window.open('', '', 'width=800,height=600');
         const canvasImage = this.canvas.toDataURL('image/png');
+        const width = this.canvas.width;
+        const height = this.canvas.height;
 
+        const newWindow = window.open('', '', `width=${Math.min(width + 40, 1200)},height=${Math.min(height + 40, 900)}`);
+        
         newWindow.document.write(`
             <!DOCTYPE html>
-            <html lang="en">
+            <html>
             <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Digital Alchemy - Exported Art</title>
                 <style>
-                    body {
-                        margin: 0;
-                        padding: 20px;
-                        background: linear-gradient(135deg, #0a0e27 0%, #1a0e3a 50%, #0f1a2e 100%);
-                        color: #e0e0ff;
-                        font-family: 'Courier New', monospace;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: center;
-                        min-height: 100vh;
-                    }
-                    .container {
-                        text-align: center;
-                        background: rgba(255, 255, 255, 0.03);
-                        border: 2px solid rgba(255, 0, 255, 0.3);
-                        border-radius: 8px;
-                        padding: 2rem;
-                        backdrop-filter: blur(10px);
-                    }
-                    h1 {
-                        background: linear-gradient(135deg, #ff00ff, #00ffff, #ffff00, #ff00ff);
-                        -webkit-background-clip: text;
-                        -webkit-text-fill-color: transparent;
-                        background-clip: text;
-                        margin-bottom: 1rem;
-                        font-size: 2rem;
-                    }
-                    img {
-                        max-width: 100%;
-                        max-height: 70vh;
-                        border: 2px solid rgba(0, 255, 255, 0.5);
-                        border-radius: 4px;
-                        margin: 1rem 0;
-                    }
-                    .buttons {
-                        display: flex;
-                        gap: 1rem;
-                        justify-content: center;
-                        margin-top: 1.5rem;
-                    }
-                    button {
-                        padding: 0.8rem 1.5rem;
-                        border: 2px solid;
-                        border-radius: 4px;
-                        cursor: pointer;
-                        font-family: 'Courier New', monospace;
-                        font-weight: bold;
-                        text-transform: uppercase;
-                        letter-spacing: 1px;
-                        transition: all 0.2s ease;
-                    }
-                    .download {
-                        background: linear-gradient(135deg, rgba(0, 255, 100, 0.3), rgba(0, 255, 150, 0.3));
-                        border-color: rgba(0, 255, 100, 0.6);
-                        color: #00ff99;
-                    }
-                    .download:hover {
-                        background: linear-gradient(135deg, rgba(0, 255, 100, 0.5), rgba(0, 255, 150, 0.5));
-                        border-color: rgba(0, 255, 100, 0.9);
-                        box-shadow: 0 0 15px rgba(0, 255, 100, 0.4);
-                    }
-                    .close {
-                        background: linear-gradient(135deg, rgba(255, 100, 0, 0.3), rgba(255, 50, 0, 0.3));
-                        border-color: rgba(255, 100, 0, 0.6);
-                        color: #ffaa00;
-                    }
-                    .close:hover {
-                        background: linear-gradient(135deg, rgba(255, 100, 0, 0.5), rgba(255, 50, 0, 0.5));
-                        border-color: rgba(255, 100, 0, 0.9);
-                        box-shadow: 0 0 15px rgba(255, 100, 0, 0.4);
-                    }
+                    body { margin: 0; padding: 0; background: #000; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+                    img { max-width: 100%; max-height: 100%; image-rendering: pixelated; }
                 </style>
             </head>
             <body>
-                <div class="container">
-                    <h1>✨ Digital Alchemy ✨</h1>
-                    <img src="${canvasImage}" alt="Exported artwork">
-                    <div class="buttons">
-                        <button class="download" onclick="downloadImage()">Download PNG</button>
-                        <button class="close" onclick="window.close()">Close</button>
-                    </div>
-                </div>
-                <script>
-                    function downloadImage() {
-                        const link = document.createElement('a');
-                        link.href = '${canvasImage}';
-                        link.download = 'digital-alchemy-' + Date.now() + '.png';
-                        link.click();
-                    }
-                </script>
+                <img src="${canvasImage}">
             </body>
             </html>
         `);
@@ -489,7 +395,6 @@ class DigitalAlchemyStudio {
     }
 }
 
-// Initialize on DOM load
 document.addEventListener('DOMContentLoaded', () => {
-    new DigitalAlchemyStudio();
+    new ImageEditor();
 });
