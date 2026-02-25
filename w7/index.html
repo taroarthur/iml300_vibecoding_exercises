@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Alchemy Studio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>✨ Digital Alchemy Studio ✨</h1>
+            <p>Transform your images into low-res digital art</p>
+        </header>
+
+        <div class="main-grid">
+            <!-- Upload Section -->
+            <div class="panel upload-panel">
+                <h2>Upload Image</h2>
+                <div class="upload-box">
+                    <input type="file" id="imageInput" accept="image/*">
+                    <label for="imageInput" class="upload-label">
+                        <span>Click to upload or drag & drop</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Canvas Display -->
+            <div class="panel canvas-panel">
+                <h2>Canvas</h2>
+                <div class="canvas-container">
+                    <canvas id="canvas"></canvas>
+                    <p id="placeholder" class="placeholder">No image loaded</p>
+                </div>
+            </div>
+
+            <!-- Controls Panel -->
+            <div class="panel controls-panel">
+                <h2>Effects</h2>
+                <div class="controls-grid">
+                    <button class="effect-btn" data-filter="pixelate">
+                        <span class="btn-label">Pixelate</span>
+                    </button>
+                    <button class="effect-btn" data-filter="threshold">
+                        <span class="btn-label">Threshold</span>
+                    </button>
+                    <button class="effect-btn" data-filter="ascii">
+                        <span class="btn-label">ASCII Art</span>
+                    </button>
+                    <button class="effect-btn" data-filter="posterize">
+                        <span class="btn-label">Posterize</span>
+                    </button>
+                    <button class="effect-btn" data-filter="dither">
+                        <span class="btn-label">Dither</span>
+                    </button>
+                    <button class="effect-btn" data-filter="grayscale">
+                        <span class="btn-label">Grayscale</span>
+                    </button>
+                    <button class="effect-btn" data-filter="invert">
+                        <span class="btn-label">Invert</span>
+                    </button>
+                    <button class="effect-btn" data-filter="colorReduce">
+                        <span class="btn-label">Reduce Colors</span>
+                    </button>
+                    <button class="effect-btn" data-filter="edge">
+                        <span class="btn-label">Edge Detect</span>
+                    </button>
+                    <button class="effect-btn" data-filter="glitch">
+                        <span class="btn-label">Glitch</span>
+                    </button>
+                </div>
+
+                <!-- Slider Controls -->
+                <div class="slider-container">
+                    <div class="slider-group">
+                        <label for="pixelSize">Pixel Size</label>
+                        <input type="range" id="pixelSize" min="2" max="50" value="8">
+                        <span id="pixelValue">8</span>
+                    </div>
+                    <div class="slider-group">
+                        <label for="threshold">Threshold Level</label>
+                        <input type="range" id="threshold" min="0" max="255" value="128">
+                        <span id="thresholdValue">128</span>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="resetBtn" class="action-btn reset">Reset</button>
+                    <button id="exportBtn" class="action-btn export">Export to Window</button>
+                </div>
+            </div>
+
+            <!-- Info Panel -->
+            <div class="panel info-panel">
+                <h2>Info</h2>
+                <div id="info">
+                    <p>Inspired by digital aesthetics and computational art</p>
+                    <p>Apply multiple effects in sequence for unique creations</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
