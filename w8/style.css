@@ -1,0 +1,23 @@
+:root{
+  --bg: #ffffff;
+  --ink: #111;
+  --accent: #222;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+main{max-width:900px;margin:36px auto;padding:24px}
+h1{font-weight:700;letter-spacing:2px;text-align:center;margin:6px 0}
+.subtitle{text-align:center;color:#444;margin-bottom:18px}
+.score{display:grid;grid-template-columns:repeat(9,1fr);gap:18px;padding:30px 18px;border-radius:6px}
+.note{display:flex;align-items:center;justify-content:center;min-height:56px;border-radius:6px;font-size:28px;color:#333;transition:transform .14s ease,background .12s ease,box-shadow .12s ease}
+.note.dot{font-size:18px;color:#666}
+.note.p{font-family:monospace;font-size:20px;color:#222}
+.note:hover{transform:translateY(-6px) scale(1.08);box-shadow:0 10px 20px rgba(0,0,0,0.06);background:rgba(0,0,0,0.02)}
+.note.playing{background:rgba(30,30,30,0.06);box-shadow:0 12px 28px rgba(0,0,0,0.08);transform:translateY(-8px) scale(1.12)}
+.note.small{font-size:16px}
+.caption{grid-column:1 / -1;text-align:center;color:#777;padding-top:8px}
+
+@media (max-width:640px){
+  .score{grid-template-columns:repeat(6,1fr);gap:12px}
+  .note{min-height:44px;font-size:20px}
+}
