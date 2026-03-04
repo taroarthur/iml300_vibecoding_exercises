@@ -35,10 +35,7 @@ function buildScore(){
       el.addEventListener('touchend', (e)=>{ e.preventDefault(); stopPulse(el); });
     });
   });
-  const cap = document.createElement('div');
-  cap.className = 'caption';
-  cap.textContent = 'Hover any symbol to play 20Hz pulses.';
-  container.appendChild(cap);
+  // instruction text removed per request (visual-only score)
 }
 
 function startPulse(el){
@@ -46,41 +43,88 @@ function startPulse(el){
   if (getAudioContext && getAudioContext().state !== 'running') {
     getAudioContext().resume();
   }
-
   if(pulses.has(el)) return; // already playing
+
+  const symbol = el.textContent.trim();
+  if(symbol === '·') return; // rest / dot — no sound
 
   // create a 20Hz sine oscillator
   const osc = new p5.Oscillator('sine');
   osc.freq(20);
-  osc.amp(0);
   osc.start();
 
-  // rhythm: pulse every 300ms (approx a steady rhythmic gesture)
-  const intervalMs = 300;
-  const pulseDuration = 120; // ms
+  // create an envelope with a softer attack
+  const env = new p5.Envelope();
+  const attack = 0.06; // softer attack (seconds)
+  const decay = 0.05;
+  const sustainLevel = 0.5;
+  const release = 0.08;
+  env.setADSR(attack, decay, sustainLevel, release);
 
-  const trigger = ()=>{
-    // ramp up quickly then down
-    osc.amp(0.7, 0.01);
-    setTimeout(()=>{ osc.amp(0, 0.08); }, pulseDuration);
-    el.classList.add('playing');
-    setTimeout(()=> el.classList.remove('playing'), pulseDuration+60);
-  };
+  // tempo and duration mapping
+  const bpm = 80;
+  const beatMs = 60000 / bpm;
+  let pattern = [];
+  let amp = 0.6;
 
-  // trigger immediately and then periodically
-  trigger();
-  const intervalId = setInterval(trigger, intervalMs);
+  if(symbol === '♩'){
+    pattern = [{dur: beatMs}];
+  } else if(symbol === '♪'){
+    pattern = [{dur: beatMs/2}];
+  } else if(symbol === '♫'){
+    // two connected eighths
+    pattern = [{dur: beatMs/2},{dur: beatMs/2}];
+  } else if(symbol === 'p' || symbol === 'P'){
+    // piano dynamic — quieter quarter
+    pattern = [{dur: beatMs}];
+    amp = 0.28;
+  } else {
+    // fallback short pulse
+    pattern = [{dur: beatMs/4}];
+  }
 
-  pulses.set(el, {osc, intervalId});
+  env.setRange(amp, 0);
+
+  // play once then repeat the pattern while hovered
+  const totalMs = pattern.reduce((s,it)=>s+it.dur, 0);
+  const timeouts = [];
+
+  function playOnce(){
+    let offset = 0;
+    pattern.forEach((note, i)=>{
+      const dur = note.dur;
+      const sustainSec = Math.max(0, (dur/1000) - (attack + release));
+      const t = setTimeout(()=>{
+        env.play(osc, 0, sustainSec);
+        el.classList.add('playing');
+        setTimeout(()=> el.classList.remove('playing'), dur);
+      }, offset);
+      timeouts.push(t);
+      offset += dur;
+    });
+  }
+
+  // start immediately and then loop
+  playOnce();
+  const intervalId = setInterval(playOnce, Math.max(20, totalMs));
+
+  pulses.set(el, {osc, env, intervalId, timeouts});
 }
 
 function stopPulse(el){
   const rec = pulses.get(el);
   if(!rec) return;
   clearInterval(rec.intervalId);
-  // smoothly ramp down and stop
+  // clear scheduled timeouts
+  if(rec.timeouts && rec.timeouts.length){
+    rec.timeouts.forEach(t=>clearTimeout(t));
+  }
+  // smoothly stop oscillator
+  try{
+    rec.env.setRange(0,0);
+  }catch(e){}
   rec.osc.amp(0,0.06);
-  setTimeout(()=>{ rec.osc.stop(); rec.osc.dispose(); }, 120);
+  setTimeout(()=>{ try{ rec.osc.stop(); rec.osc.dispose(); }catch(e){} }, 140);
   pulses.delete(el);
   el.classList.remove('playing');
 }

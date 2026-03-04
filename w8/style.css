@@ -1,12 +1,11 @@
 :root{
-  --bg: #ffffff;
+  --bg: #fbf9f5;
   --ink: #111;
   --accent: #222;
 }
 *{box-sizing:border-box}
 html,body{height:100%;margin:0;font-family:Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink)}
 main{max-width:900px;margin:36px auto;padding:24px}
-h1{font-weight:700;letter-spacing:2px;text-align:center;margin:6px 0}
 .subtitle{text-align:center;color:#444;margin-bottom:18px}
 .score{display:grid;grid-template-columns:repeat(9,1fr);gap:18px;padding:30px 18px;border-radius:6px}
 .note{display:flex;align-items:center;justify-content:center;min-height:56px;border-radius:6px;font-size:28px;color:#333;transition:transform .14s ease,background .12s ease,box-shadow .12s ease}
