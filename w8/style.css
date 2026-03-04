@@ -15,7 +15,7 @@ main{max-width:900px;margin:36px auto;padding:24px}
 .note.playing{background:rgba(30,30,30,0.06);box-shadow:0 12px 28px rgba(0,0,0,0.08);transform:translateY(-8px) scale(1.12)}
 .note.small{font-size:16px}
 .caption{grid-column:1 / -1;text-align:center;color:#777;padding-top:8px}
-
+::selection{background:#fc7514;color:#fff}
 @media (max-width:640px){
   .score{grid-template-columns:repeat(6,1fr);gap:12px}
   .note{min-height:44px;font-size:20px}
