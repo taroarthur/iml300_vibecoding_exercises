@@ -3,12 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Space Waste Explorer</title>
+  <title>Space Waste Explorer (2D)</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <canvas id="scene"></canvas>
-  <!-- load three as an ES module; main.js is also a module -->
-  <script type="module" src="main.js"></script>
+  <div id="container">
+    <canvas id="scene2d"></canvas>
+    <div id="info">
+      <h1>Space Waste Explorer – 2D</h1>
+      <p>Click fragments to learn more.</p>
+    </div>
+  </div>
+  <script src="main2d.js"></script>
 </body>
 </html>
