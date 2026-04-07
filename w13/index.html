@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>image edit</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baumans&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main-container">
+        <!-- Left Panel -->
+        <div class="left-panel">
+            <div class="panel-section">
+                <div class="panel-label">load</div>
+                <div class="upload-box">
+                    <input type="file" id="imageInput" accept="image/*">
+                    <label for="imageInput">
+                        <div class="file-text">[open file]</div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="panel-section">
+                <div class="panel-label">theme</div>
+                <select id="themeSelect" class="theme-select">
+                    <option value="bw">black / white</option>
+                    <option value="pink">pink / grey</option>
+                    <option value="blue">blue / white</option>
+                </select>
+            </div>
+
+            <div class="panel-section">
+                <div class="panel-label">effects</div>
+                <div class="effects-list">
+                    <button class="effect-btn" data-filter="pixelate">pixelate</button>
+                    <button class="effect-btn" data-filter="threshold">threshold</button>
+                    <button class="effect-btn" data-filter="grayscale">grayscale</button>
+                    <button class="effect-btn" data-filter="invert">invert</button>
+                    <button class="effect-btn" data-filter="posterize">posterize</button>
+                    <button class="effect-btn" data-filter="dither">dither</button>
+                    <button class="effect-btn" data-filter="ascii">ascii</button>
+                    <button class="effect-btn" data-filter="colorReduce">colors</button>
+                    <button class="effect-btn" data-filter="edge">edges</button>
+                    <button class="effect-btn" data-filter="glitch">glitch</button>
+                </div>
+            </div>
+
+            <div class="panel-section">
+                <div class="panel-label">settings</div>
+                <div class="setting">
+                    <label>pixel</label>
+                    <input type="range" id="pixelSize" min="2" max="50" value="8">
+                </div>
+                <div class="setting">
+                    <label>threshold</label>
+                    <input type="range" id="threshold" min="0" max="255" value="128">
+                </div>
+            </div>
+
+            <div class="panel-section">
+                <button id="resetBtn" class="action-btn">reset</button>
+            </div>
+
+            <div class="panel-section info">
+                <p>drag/drop or click to load</p>
+                <p>chain effects together</p>
+                <p id="imageInfo"></p>
+            </div>
+        </div>
+
+        <!-- Canvas Area -->
+        <div class="canvas-area">
+            <canvas id="canvas"></canvas>
+            <p id="placeholder" class="placeholder">[no image]</p>
+        </div>
+
+        <!-- Right Panel -->
+        <div class="right-panel">
+            <button id="exportBtn" class="action-btn export">[ export ]</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
