@@ -29,7 +29,9 @@ class ImageEditor {
         });
 
         // Theme select
-        document.getElementById('themeSelect').addEventListener('change', (e) => {
+        const themeSelect = document.getElementById('themeSelect');
+        document.body.className = 'theme-' + themeSelect.value; // Set initial theme
+        themeSelect.addEventListener('change', (e) => {
             document.body.className = 'theme-' + e.target.value;
         });
 

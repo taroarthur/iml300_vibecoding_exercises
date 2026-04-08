@@ -21,19 +21,19 @@ body {
 }
 
 /* Theme Options */
-body.theme-red {
-     --primary: #a1e7ff;
+body.theme-sky {
+    --primary: #a1e7ff;
     --secondary: #190603;
     --accent: #aa1111;
 }
 
-body.theme-pink {
+body.theme-bubblegum {
     --primary: #ff156b;
     --secondary: #231d20;
     --accent: #ffd5e4;
 }
 
-body.theme-blue {
+body.theme-ultramarine {
     --primary: #e2e2ff;
     --secondary: #1a1eff;
     --accent: #ff4015;
