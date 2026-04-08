@@ -20,6 +20,17 @@ body {
     font-size: 15px;
 }
 
+/* Text Selection */
+::selection {
+    background-color: var(--accent);
+    color: var(--primary);
+}
+
+::-moz-selection {
+    background-color: var(--accent);
+    color: var(--primary);
+}
+
 /* Theme Options */
 body.theme-sky {
     --primary: #a1e7ff;
