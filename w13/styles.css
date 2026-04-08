@@ -28,15 +28,15 @@ body.theme-red {
 }
 
 body.theme-pink {
-    --primary: #2a2a2a;
-    --secondary: #ff69b4;
-    --accent: #444444;
+    --primary: #ff156b;
+    --secondary: #231d20;
+    --accent: #ffd5e4;
 }
 
 body.theme-blue {
-    --primary: #ffffff;
-    --secondary: #0066cc;
-    --accent: #cccccc;
+    --primary: #e2e2ff;
+    --secondary: #1a1eff;
+    --accent: #ff4015;
 }
 
 .main-container {
